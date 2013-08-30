@@ -4,11 +4,65 @@
 	<meta charset="UTF-8">
 	<title>Smart Admin</title>
 	<link href="./css/common.css" rel="stylesheet" type="text/css" />   
-	<script src="/siteCmd/cmdScript/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="./js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="./js/common.js" type="text/javascript"></script>    
+	<script src="./js/AjaxPageView.js" type="text/javascript"></script>    
+    <script type="text/javascript">
+		$(window).load(function(){
+			var view_width = $(window).width() - $('#left').outerWidth() - $('.page_move_right').outerWidth() - $('.page_move_left').outerWidth();
+			var view_height = $(window).height() - $('#header').outerHeight();
+
+			$('#view').width(view_width).height(view_height);
+		});
+
+        $.AjaxPageView();
+
+		$(document).ready(function(){
+			$.TreeMenu_v01({
+				Div_Id: "left",
+				Open_Code : ""
+			});
+		});
+    </script>
 </head>
 <body>
 	
+	<div id="wrap">	
+		<div id="header">
+			<h1>Header</h1>
+		</div>
 
+		<div id="container">
+
+			<div id="contents">
+				<div id="left_back"></div>
+				<div id="left">
+
+					<ul>
+						<li>
+							<a href="" class="callajax">Page 1</a>
+							<ul>
+								<li><a href="./page/P1/page01-1.html" class="callajax">Page 1-1</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="/page/P2/page02.html" class="callajax">Page 2</a>
+						</li>
+					</ul>
+
+				</div>
+
+
+				<div id="view">
+					<div class="page"></div>
+				</div>
+
+                <div class="page_move_right"><span class="right_arrow">&nbsp;</span></div>
+                <div class="page_move_left"><span class="left_arrow">&nbsp</span></div>
+
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
